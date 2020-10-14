@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports["default"] = void 0;
 
-var _babelHelperVueJsxMergeProps = _interopRequireDefault(require("babel-helper-vue-jsx-merge-props"));
+var _vue = require("vue");
 
 var _RLTableRow = _interopRequireDefault(require("./renderless/RLTableRow"));
 
@@ -24,44 +24,33 @@ var _default2 = {
     VtChildRowToggler: _VtChildRowToggler["default"]
   },
   render: function render() {
-    var h = arguments[0];
-    return h("r-l-table-row", {
-      attrs: {
-        row: this.row,
-        index: this.index
-      },
-      scopedSlots: {
+    return (0, _vue.createVNode)((0, _vue.resolveComponent)("r-l-table-row"), {
+      "row": this.row,
+      "index": this.index,
+      "scopedSlots": {
         "default": function _default(props) {
           return props.override ? h(props.override, {
             attrs: {
               props: props
             }
-          }) : h("tr", (0, _babelHelperVueJsxMergeProps["default"])([{
+          }) : (0, _vue.createVNode)("tr", (0, _vue.mergeProps)({
             "class": "VueTables__row " + props.rowAttrs["class"]
           }, {
             attrs: props.rowAttrs.attrs
           }, {
-            on: {
-              "click": props.rowEvents.click
-            }
-          }]), [props.childRowTogglerFirst ? h("vt-child-row-toggler", {
-            attrs: {
-              "row-id": props.rowId
-            }
-          }) : '', props.columns.map(function (column) {
-            return h("vt-table-cell", {
-              attrs: {
-                column: column
-              }
-            });
-          }), props.childRowTogglerLast ? h("vt-child-row-toggler", {
-            attrs: {
-              "row-id": props.rowId
-            }
-          }) : '']);
+            "on-click": props.rowEvents.click
+          }), [props.childRowTogglerFirst ? (0, _vue.createVNode)((0, _vue.resolveComponent)("vt-child-row-toggler"), {
+            "row-id": props.rowId
+          }, null) : '', props.columns.map(function (column) {
+            return (0, _vue.createVNode)((0, _vue.resolveComponent)("vt-table-cell"), {
+              "column": column
+            }, null);
+          }), props.childRowTogglerLast ? (0, _vue.createVNode)((0, _vue.resolveComponent)("vt-child-row-toggler"), {
+            "row-id": props.rowId
+          }, null) : '']);
         }
       }
-    });
+    }, null);
   }
 };
 exports["default"] = _default2;

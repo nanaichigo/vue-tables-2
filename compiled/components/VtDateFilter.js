@@ -5,6 +5,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports["default"] = void 0;
 
+var _vue = require("vue");
+
 var _RLDateFilter = _interopRequireDefault(require("./renderless/RLDateFilter"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
@@ -18,27 +20,23 @@ var _default2 = {
   render: function render(h) {
     var _this = this;
 
-    return h("r-l-date-filter", {
-      attrs: {
-        column: this.column
-      },
-      scopedSlots: {
+    return (0, _vue.createVNode)((0, _vue.resolveComponent)("r-l-date-filter"), {
+      "column": this.column,
+      "scopedSlots": {
         "default": function _default(props) {
           return props.overide ? h(props.override, {
             attrs: {
               props: props
             }
-          }) : h("div", {
+          }) : (0, _vue.createVNode)("div", {
             "class": "VueTables__date-filter",
-            attrs: {
-              id: 'VueTables__' + _this.column + '-filter'
-            }
-          }, [h("span", {
+            "id": 'VueTables__' + _this.column + '-filter'
+          }, [(0, _vue.createVNode)("span", {
             "class": "VueTables__filter-placeholder"
           }, [props.placeholder])]);
         }
       }
-    });
+    }, null);
   }
 };
 exports["default"] = _default2;

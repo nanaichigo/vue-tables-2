@@ -5,6 +5,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports["default"] = void 0;
 
+var _vue = require("vue");
+
 var _RLTableHead = _interopRequireDefault(require("./renderless/RLTableHead"));
 
 var _VtHeadingsRow = _interopRequireDefault(require("./VtHeadingsRow"));
@@ -21,18 +23,17 @@ var _default2 = {
     VtFiltersRow: _VtFiltersRow["default"]
   },
   render: function render() {
-    var h = arguments[0];
-    return h("r-l-table-head", {
-      scopedSlots: {
+    return (0, _vue.createVNode)((0, _vue.resolveComponent)("r-l-table-head"), {
+      "scopedSlots": {
         "default": function _default(props) {
           return props.override ? h(props.override, {
             attrs: {
               props: props
             }
-          }) : h("thead", [props.slots.prependHead, h("vt-headings-row"), props.slots.beforeFilters, props.opts.filterByColumn && props.opts.filterable ? h("vt-filters-row") : '', props.slots.afterFilters]);
+          }) : (0, _vue.createVNode)("thead", null, [props.slots.prependHead, (0, _vue.createVNode)((0, _vue.resolveComponent)("vt-headings-row"), null, null), props.slots.beforeFilters, props.opts.filterByColumn && props.opts.filterable ? (0, _vue.createVNode)((0, _vue.resolveComponent)("vt-filters-row"), null, null) : '', props.slots.afterFilters]);
         }
       }
-    });
+    }, null);
   }
 };
 exports["default"] = _default2;

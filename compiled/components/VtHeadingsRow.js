@@ -5,6 +5,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports["default"] = void 0;
 
+var _vue = require("vue");
+
 var _RLHeadingsRow = _interopRequireDefault(require("./renderless/RLHeadingsRow"));
 
 var _VtTableHeading = _interopRequireDefault(require("./VtTableHeading"));
@@ -18,9 +20,8 @@ var _default2 = {
     VtTableHeading: _VtTableHeading["default"]
   },
   render: function render() {
-    var h = arguments[0];
-    return h("r-l-headings-row", {
-      scopedSlots: {
+    return (0, _vue.createVNode)((0, _vue.resolveComponent)("r-l-headings-row"), {
+      "scopedSlots": {
         "default": function _default(props) {
           if (props.override) {
             return h(props.override, {
@@ -33,25 +34,23 @@ var _default2 = {
           var headings = [];
 
           if (props.childRowTogglerFirst) {
-            headings.push(h("th"));
+            headings.push((0, _vue.createVNode)("th", null, null));
           }
 
           props.columns.map(function (column) {
-            headings.push(h("vt-table-heading", {
-              attrs: {
-                column: column
-              }
-            }));
+            headings.push((0, _vue.createVNode)((0, _vue.resolveComponent)("vt-table-heading"), {
+              "column": column
+            }, null));
           });
 
           if (props.childRowTogglerLast) {
-            headings.push(h("th"));
+            headings.push((0, _vue.createVNode)("th", null, null));
           }
 
-          return h("tr", [headings]);
+          return (0, _vue.createVNode)("tr", null, [headings]);
         }
       }
-    });
+    }, null);
   }
 };
 exports["default"] = _default2;

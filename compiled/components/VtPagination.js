@@ -5,6 +5,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports["default"] = void 0;
 
+var _vue = require("vue");
+
 var _RLPagination = _interopRequireDefault(require("./renderless/RLPagination"));
 
 var _vuePagination = _interopRequireDefault(require("vue-pagination-2"));
@@ -18,29 +20,25 @@ var _default2 = {
     Pagination: _vuePagination["default"]
   },
   render: function render(h) {
-    return h("r-l-pagination", {
-      scopedSlots: {
+    return (0, _vue.createVNode)((0, _vue.resolveComponent)("r-l-pagination"), {
+      "scopedSlots": {
         "default": function _default(props) {
           return props.override ? h(props.override, {
             attrs: {
               props: props
             }
-          }) : h("pagination", {
-            attrs: {
-              options: props.optionsObj,
-              records: props.records,
-              "per-page": props.perPage,
-              value: props.page
-            },
-            on: {
-              "input": function input(page) {
-                return props.setPage(page);
-              }
+          }) : (0, _vue.createVNode)((0, _vue.resolveComponent)("pagination"), {
+            "options": props.optionsObj,
+            "records": props.records,
+            "per-page": props.perPage,
+            "value": props.page,
+            "onInput": function onInput(page) {
+              return props.setPage(page);
             }
-          });
+          }, null);
         }
       }
-    });
+    }, null);
   }
 };
 exports["default"] = _default2;

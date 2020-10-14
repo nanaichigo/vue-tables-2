@@ -5,6 +5,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports["default"] = void 0;
 
+var _vue = require("vue");
+
 var _VtPerPageSelector = _interopRequireDefault(require("./VtPerPageSelector"));
 
 var _VtTable = _interopRequireDefault(require("./VtTable"));
@@ -116,46 +118,44 @@ var _default2 = {
     prop: "data"
   },
   render: function render(h) {
-    return h("r-l-server-table", {
-      attrs: {
-        url: this.url,
-        columns: this.columns,
-        name: this.name,
-        options: this.options
-      },
-      ref: "table",
-      scopedSlots: {
+    return (0, _vue.createVNode)((0, _vue.resolveComponent)("r-l-server-table"), {
+      "url": this.url,
+      "columns": this.columns,
+      "name": this.name,
+      "options": this.options,
+      "ref": "table",
+      "scopedSlots": {
         "default": function _default(props) {
           return props.override ? h(props.override, {
             attrs: {
               props: props
             }
-          }) : h("div", {
+          }) : (0, _vue.createVNode)("div", {
             "class": "VueTables VueTables--" + props.source
-          }, [h("div", {
+          }, [(0, _vue.createVNode)("div", {
             "class": props.theme.row
-          }, [h("div", {
+          }, [(0, _vue.createVNode)("div", {
             "class": props.theme.column
-          }, [!props.opts.filterByColumn && props.opts.filterable ? h("div", {
+          }, [!props.opts.filterByColumn && props.opts.filterable ? (0, _vue.createVNode)("div", {
             "class": "".concat(props.theme.field, " ").concat(props.theme.inline, " ").concat(props.theme.left, " VueTables__search")
-          }, [props.slots.beforeFilter, h("vt-generic-filter", {
-            ref: "genericFilter"
-          }), props.slots.afterFilter]) : '', props.slots.afterFilterWrapper, props.perPageValues.length > 1 || props.opts.alwaysShowPerPageSelect ? h("div", {
+          }, [props.slots.beforeFilter, (0, _vue.createVNode)((0, _vue.resolveComponent)("vt-generic-filter"), {
+            "ref": "genericFilter"
+          }, null), props.slots.afterFilter]) : '', props.slots.afterFilterWrapper, props.perPageValues.length > 1 || props.opts.alwaysShowPerPageSelect ? (0, _vue.createVNode)("div", {
             "class": "".concat(props.theme.field, " ").concat(props.theme.inline, " ").concat(props.theme.right, " VueTables__limit")
-          }, [props.slots.beforeLimit, h("vt-per-page-selector"), props.slots.afterLimit]) : '', props.opts.pagination.dropdown && props.totalPages > 1 ? h("div", {
+          }, [props.slots.beforeLimit, (0, _vue.createVNode)((0, _vue.resolveComponent)("vt-per-page-selector"), null, null), props.slots.afterLimit]) : '', props.opts.pagination.dropdown && props.totalPages > 1 ? (0, _vue.createVNode)("div", {
             "class": "VueTables__pagination-wrapper"
-          }, [h("div", {
+          }, [(0, _vue.createVNode)("div", {
             "class": "".concat(props.theme.field, " ").concat(props.theme.inline, " ").concat(props.theme.right, " VueTables__dropdown-pagination")
-          }, [h("vt-dropdown-pagination")])]) : '', props.opts.columnsDropdown ? h("div", {
+          }, [(0, _vue.createVNode)((0, _vue.resolveComponent)("vt-dropdown-pagination"), null, null)])]) : '', props.opts.columnsDropdown ? (0, _vue.createVNode)("div", {
             "class": "VueTables__columns-dropdown-wrapper ".concat(props.theme.right, " ").concat(props.theme.dropdown.container)
-          }, [h("vt-columns-dropdown")]) : ''])]), props.slots.beforeTable, h("div", {
+          }, [(0, _vue.createVNode)((0, _vue.resolveComponent)("vt-columns-dropdown"), null, null)]) : ''])]), props.slots.beforeTable, (0, _vue.createVNode)("div", {
             "class": "table-responsive"
-          }, [h("vt-table", {
-            ref: "vt_table"
-          })]), props.slots.afterTable, props.opts.pagination.show ? h("vt-pagination") : '']);
+          }, [(0, _vue.createVNode)((0, _vue.resolveComponent)("vt-table"), {
+            "ref": "vt_table"
+          }, null)]), props.slots.afterTable, props.opts.pagination.show ? (0, _vue.createVNode)((0, _vue.resolveComponent)("vt-pagination"), null, null) : '']);
         }
       }
-    });
+    }, null);
   }
 };
 exports["default"] = _default2;

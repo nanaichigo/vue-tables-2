@@ -5,6 +5,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports["default"] = void 0;
 
+var _vue = require("vue");
+
 var _RLGroupRow = _interopRequireDefault(require("./renderless/RLGroupRow"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
@@ -16,37 +18,28 @@ var _default2 = {
   },
   props: ['row'],
   render: function render() {
-    var h = arguments[0];
-    return h("r-l-group-row", {
-      attrs: {
-        row: this.row
-      },
-      scopedSlots: {
+    return (0, _vue.createVNode)((0, _vue.resolveComponent)("r-l-group-row"), {
+      "row": this.row,
+      "scopedSlots": {
         "default": function _default(props) {
           return props.override ? h(props.override, {
             attrs: {
               props: props
             }
-          }) : h("tr", {
+          }) : (0, _vue.createVNode)("tr", {
             "class": props.theme.groupTr,
-            on: {
-              "click": props.toggleGroupDirection
-            }
-          }, [h("td", {
-            attrs: {
-              colspan: props.colspan
-            }
-          }, [props.canToggleGroup ? h("button", {
+            "on-click": props.toggleGroupDirection
+          }, [(0, _vue.createVNode)("td", {
+            "colspan": props.colspan
+          }, [props.canToggleGroup ? (0, _vue.createVNode)("button", {
             "class": props.theme.button,
-            on: {
-              "click": props.toggleGroup.bind(this, props.groupValue)
-            }
-          }, [props.groupValue, h("span", {
+            "on-click": props.toggleGroup.bind(this, props.groupValue)
+          }, [props.groupValue, (0, _vue.createVNode)("span", {
             "class": props.groupToggleIcon(props.groupValue)
-          })]) : '', !props.canToggleGroup ? h("span", [props.groupValue]) : '', props.slot])]);
+          }, null)]) : '', !props.canToggleGroup ? (0, _vue.createVNode)("span", null, [props.groupValue]) : '', props.slot])]);
         }
       }
-    });
+    }, null);
   }
 };
 exports["default"] = _default2;

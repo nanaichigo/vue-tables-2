@@ -5,6 +5,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports["default"] = void 0;
 
+var _vue = require("vue");
+
 var _RLTableHeading = _interopRequireDefault(require("./renderless/RLTableHeading"));
 
 var _VtSortControl = _interopRequireDefault(require("./VtSortControl"));
@@ -19,36 +21,27 @@ var _default2 = {
     VtSortControl: _VtSortControl["default"]
   },
   render: function render() {
-    var h = arguments[0];
-    return h("r-l-table-heading", {
-      attrs: {
-        column: this.column
-      },
-      scopedSlots: {
+    return (0, _vue.createVNode)((0, _vue.resolveComponent)("r-l-table-heading"), {
+      "column": this.column,
+      "scopedSlots": {
         "default": function _default(props) {
           return props.override ? h(props.override, {
             attrs: {
               props: props
             }
-          }) : h("th", {
-            on: {
-              "keypress": props.thEvents.keypress,
-              "click": props.thEvents.click
-            },
+          }) : (0, _vue.createVNode)("th", {
+            "on-keypress": props.thEvents.keypress,
+            "on-click": props.thEvents.click,
             "class": props.thAttrs["class"],
-            attrs: {
-              title: props.thAttrs.title,
-              tabindex: props.thAttrs.tabIndex
-            }
-          }, [h("span", {
+            "title": props.thAttrs.title,
+            "tabindex": props.thAttrs.tabIndex
+          }, [(0, _vue.createVNode)("span", {
             "class": "VueTables__heading",
-            attrs: {
-              title: props.title
-            }
-          }, [props.heading]), h("vt-sort-control")]);
+            "title": props.title
+          }, [props.heading]), (0, _vue.createVNode)((0, _vue.resolveComponent)("vt-sort-control"), null, null)]);
         }
       }
-    });
+    }, null);
   }
 };
 exports["default"] = _default2;
