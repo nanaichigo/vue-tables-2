@@ -19,7 +19,7 @@ var _default = {
     };
   },
   render: function render() {
-    return this.$scopedSlots["default"]({
+    return this.$slots["default"]({
       opts: this.opts(),
       columns: this.allColumns(),
       hasChildRow: this.hasChildRow(),

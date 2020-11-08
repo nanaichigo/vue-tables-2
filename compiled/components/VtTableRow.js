@@ -13,6 +13,8 @@ var _VtTableCell = _interopRequireDefault(require("./VtTableCell"));
 
 var _VtChildRowToggler = _interopRequireDefault(require("./VtChildRowToggler"));
 
+var _omit = _interopRequireDefault(require("../helpers/omit"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 var _default2 = {
@@ -24,33 +26,28 @@ var _default2 = {
     VtChildRowToggler: _VtChildRowToggler["default"]
   },
   render: function render() {
-    return (0, _vue.createVNode)((0, _vue.resolveComponent)("r-l-table-row"), {
-      "row": this.row,
-      "index": this.index,
-      "scopedSlots": {
-        "default": function _default(props) {
-          return props.override ? h(props.override, {
-            attrs: {
-              props: props
-            }
-          }) : (0, _vue.createVNode)("tr", (0, _vue.mergeProps)({
-            "class": "VueTables__row " + props.rowAttrs["class"]
-          }, {
-            attrs: props.rowAttrs.attrs
-          }, {
-            "on-click": props.rowEvents.click
-          }), [props.childRowTogglerFirst ? (0, _vue.createVNode)((0, _vue.resolveComponent)("vt-child-row-toggler"), {
-            "row-id": props.rowId
-          }, null) : '', props.columns.map(function (column) {
-            return (0, _vue.createVNode)((0, _vue.resolveComponent)("vt-table-cell"), {
-              "column": column
-            }, null);
-          }), props.childRowTogglerLast ? (0, _vue.createVNode)((0, _vue.resolveComponent)("vt-child-row-toggler"), {
-            "row-id": props.rowId
-          }, null) : '']);
-        }
+    return (0, _vue.h)(_RLTableRow["default"], {
+      row: this.row,
+      index: this.index
+    }, {
+      "default": function _default(props) {
+        return props.override ? (0, _vue.h)(props.override, {
+          props: (0, _omit["default"])(props)
+        }) : (0, _vue.createVNode)("tr", (0, _vue.mergeProps)({
+          "class": "VueTables__row " + props.rowAttrs["class"]
+        }, props.rowAttrs.attrs, {
+          "on-click": props.rowEvents.click
+        }), [props.childRowTogglerFirst ? (0, _vue.h)(_VtChildRowToggler["default"], {
+          rowId: props.rowId
+        }) : '', props.columns.map(function (column) {
+          return (0, _vue.h)(_VtTableCell["default"], {
+            column: column
+          });
+        }), props.childRowTogglerLast ? (0, _vue.h)(_VtChildRowToggler["default"], {
+          rowId: props.rowId
+        }) : '']);
       }
-    }, null);
+    });
   }
 };
 exports["default"] = _default2;

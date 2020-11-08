@@ -1,32 +1,30 @@
 import RLTable from "./renderless/RLTable";
 import VtTableHead from "./VtTableHead";
 import VtTableBody from "./VtTableBody";
+import {h} from 'vue'
+import omit from "../helpers/omit"
 
 export default {
     name: 'VtTable',
     components: {RLTable, VtTableHead, VtTableBody},
     render() {
-        return <r-l-table scopedSlots={
-            {
-                default: function (props) {
+        return h(RLTable, {}, {
+            default: function (props) {
 
-                    var caption = props.caption ? <caption>{props.caption}</caption> : '';
+                var caption = props.caption ? <caption>{props.caption}</caption> : '';
 
-                    return props.override ? h(props.override, {attrs: {props}}) :
-                        <table
-                            class={props.tableAttrs.class}
-                            summary={props.tableAttrs.summary}
-                        >
-                            {caption}
-                            <vt-table-head/>
-                            {props.slots.beforeBody}
-                            <vt-table-body ref="vt_table_body"/>
-                            {props.slots.afterBody}
-                        </table>
-                }
+                return props.override ? h(props.override, {props:omit(props)}) :
+                    <table
+                        class={props.tableAttrs.class}
+                        summary={props.tableAttrs.summary}
+                    >
+                        {caption}
+                        {h(VtTableHead)}
+                        {props.slots.beforeBody}
+                        {h(VtTableBody)}
+                        {props.slots.afterBody}
+                    </table>
             }
-        }
-            >
-            </r-l-table>
-        }
+        })
+    }
 }

@@ -8,7 +8,7 @@ var _default = {
   name: 'RLNoResultsRow',
   inject: ['colspan', 'display', 'componentsOverride', 'loading', 'initialRequestSent', 'tabIndex', 'opts'],
   render: function render() {
-    return this.$scopedSlots["default"]({
+    return this.$slots["default"]({
       opts: this.opts(),
       colspan: this.colspan(),
       display: this.display,

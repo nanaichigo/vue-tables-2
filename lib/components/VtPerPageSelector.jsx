@@ -1,13 +1,14 @@
 import RLPerPageSelector from "./renderless/RLPerPageSelector";
+import {h} from 'vue'
+import omit from "../helpers/omit"
 
 export default {
     name: 'VtPerPageSelector',
     components: {RLPerPageSelector},
     render() {
-        return <r-l-per-page-selector scopedSlots={
-            {
+        return h(RLPerPageSelector, {}, {
                 default: function (props) {
-                    return props.override ? h(props.override, {attrs:{props}}) : <div class="VueTables__limit-field">
+                    return props.override ? h(props.override, {props: omit(props)}) : <div class="VueTables__limit-field">
                             <label class={props.labelClass} for={`VueTables__limit_${props.id}`}>
                                 {props.display('limit')}
                             </label>
@@ -19,10 +20,6 @@ export default {
                             </select>
                     </div>
                 }
-            }
-        }
-        >
-
-        </r-l-per-page-selector>
+        })
     }
 }

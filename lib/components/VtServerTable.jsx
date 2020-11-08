@@ -4,6 +4,8 @@ import VtPagination from "./VtPagination";
 import VtDropdownPagination from "./VtDropdownPagination";
 import VtGenericFilter from "./VtGenericFilter";
 import VtColumnsDropdown from "./VtColumnsDropdown";
+import {h} from 'vue'
+import omit from "../helpers/omit"
 
 export default {
     name: 'VtServerTable',
@@ -87,14 +89,13 @@ export default {
     },
     provide() {
         return {
-            scopedSlots: () => this.$scopedSlots,
             slots: () => this.$slots
         }
     },
     model: {
         prop: "data"
     },
-    render(h) {
+    render() {
         return <r-l-server-table url={this.url} columns={this.columns} name={this.name} options={this.options}
                                  ref="table" scopedSlots={
             {

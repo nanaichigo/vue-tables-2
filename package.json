@@ -1,9 +1,9 @@
 {
-  "name": "vue-tables-3",
+  "name": "v-tables-3",
   "description": "Vue.js 3 grid components",
   "version": "0.1.0",
   "keywords": [
-    "vue2",
+    "vue3",
     "vuex",
     "bootstrap",
     "tables",
@@ -39,7 +39,7 @@
     "watch-server": "cross-env NODE_ENV=test mocha-webpack --watch --require test/setup/setup.js test/setup/server-setup.js test/*.spec.js test/server/*.spec.js"
   },
   "license": "GPLv3",
-  "main": "dist/vue-tables-3.npm.min.js",
+  "main": "compiled/index.js",
   "devDependencies": {
     "@babel/cli": "^7.6.4",
     "@babel/core": "^7.6.4",

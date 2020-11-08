@@ -9,7 +9,7 @@ var _default = {
   inject: ['opts', 'search', 'query', 'theme', 'getHeading', 'display', 'getColumnName', 'componentsOverride'],
   props: ['column'],
   render: function render(h) {
-    return this.$scopedSlots["default"]({
+    return this.$slots["default"]({
       opts: this.opts(),
       column: this.column,
       debounce: this.opts().debounce,

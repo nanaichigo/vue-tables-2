@@ -1,17 +1,18 @@
 import RLHeadingsRow from "./renderless/RLHeadingsRow";
 import VtTableHeading from "./VtTableHeading";
+import {h} from "vue"
+import omit from "../helpers/omit"
 
 export default {
     name: 'VtHeadingsRow',
     components: {RLHeadingsRow, VtTableHeading},
     render() {
-        return <r-l-headings-row scopedSlots={
-            {
+        return h(RLHeadingsRow, {}, {
                 default: function (props) {
 
                     if (props.override) {
                         return h(props.override, {
-                            attrs: {props}
+                            props: omit(props)
                         })
                     }
 
@@ -23,8 +24,8 @@ export default {
 
                     props.columns.map(function (column) {
                         headings.push(
-                            <vt-table-heading column={column}/>
-                        );
+                            h(VtTableHeading, {column})
+                        )
                     });
 
                     if (props.childRowTogglerLast) {
@@ -35,8 +36,7 @@ export default {
                         {headings}
                     </tr>
                 }
-            }
-        }>
-        </r-l-headings-row>
+
+        })
     }
 }

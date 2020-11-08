@@ -8,7 +8,7 @@ var _default = {
   name: 'RLHeadingRow',
   inject: ['opts', 'theme', 'hasChildRow', 'allColumns', 'componentsOverride'],
   render: function render() {
-    return this.$scopedSlots["default"]({
+    return this.$slots["default"]({
       override: this.componentsOverride.headingsRow,
       opts: this.opts(),
       columns: this.allColumns(),

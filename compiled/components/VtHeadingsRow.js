@@ -11,6 +11,8 @@ var _RLHeadingsRow = _interopRequireDefault(require("./renderless/RLHeadingsRow"
 
 var _VtTableHeading = _interopRequireDefault(require("./VtTableHeading"));
 
+var _omit = _interopRequireDefault(require("../helpers/omit"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 var _default2 = {
@@ -20,37 +22,33 @@ var _default2 = {
     VtTableHeading: _VtTableHeading["default"]
   },
   render: function render() {
-    return (0, _vue.createVNode)((0, _vue.resolveComponent)("r-l-headings-row"), {
-      "scopedSlots": {
-        "default": function _default(props) {
-          if (props.override) {
-            return h(props.override, {
-              attrs: {
-                props: props
-              }
-            });
-          }
-
-          var headings = [];
-
-          if (props.childRowTogglerFirst) {
-            headings.push((0, _vue.createVNode)("th", null, null));
-          }
-
-          props.columns.map(function (column) {
-            headings.push((0, _vue.createVNode)((0, _vue.resolveComponent)("vt-table-heading"), {
-              "column": column
-            }, null));
+    return (0, _vue.h)(_RLHeadingsRow["default"], {}, {
+      "default": function _default(props) {
+        if (props.override) {
+          return (0, _vue.h)(props.override, {
+            props: (0, _omit["default"])(props)
           });
-
-          if (props.childRowTogglerLast) {
-            headings.push((0, _vue.createVNode)("th", null, null));
-          }
-
-          return (0, _vue.createVNode)("tr", null, [headings]);
         }
+
+        var headings = [];
+
+        if (props.childRowTogglerFirst) {
+          headings.push((0, _vue.createVNode)("th", null, null));
+        }
+
+        props.columns.map(function (column) {
+          headings.push((0, _vue.h)(_VtTableHeading["default"], {
+            column: column
+          }));
+        });
+
+        if (props.childRowTogglerLast) {
+          headings.push((0, _vue.createVNode)("th", null, null));
+        }
+
+        return (0, _vue.createVNode)("tr", null, [headings]);
       }
-    }, null);
+    });
   }
 };
 exports["default"] = _default2;

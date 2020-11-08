@@ -9,6 +9,8 @@ var _vue = require("vue");
 
 var _RLChildRowToggler = _interopRequireDefault(require("./renderless/RLChildRowToggler"));
 
+var _omit = _interopRequireDefault(require("../helpers/omit"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 var _default2 = {
@@ -17,29 +19,26 @@ var _default2 = {
   components: {
     RLChildRowToggler: _RLChildRowToggler["default"]
   },
-  render: function render(h) {
-    return (0, _vue.createVNode)((0, _vue.resolveComponent)("r-l-child-row-toggler"), {
-      "row-id": this.rowId,
-      "scopedSlots": {
-        "default": function _default(props) {
-          return props.override ? h(props.override, {
-            attrs: {
-              props: props
+  render: function render() {
+    return (0, _vue.h)(_RLChildRowToggler["default"], {
+      rowId: this.rowId
+    }, {
+      "default": function _default(props) {
+        return props.override ? (0, _vue.h)(props.override, {
+          props: (0, _omit["default"])(props)
+        }) : (0, _vue.createVNode)("td", {
+          "tabindex": props.tabIndex,
+          "on-keypress": function onKeypress(e) {
+            if (e.key === 'Enter') {
+              props.toggle();
             }
-          }) : (0, _vue.createVNode)("td", {
-            "tabindex": props.tabIndex,
-            "on-keypress": function onKeypress(e) {
-              if (e.key === 'Enter') {
-                props.toggle();
-              }
-            },
-            "on-click": props.toggle
-          }, [(0, _vue.createVNode)("span", {
-            "class": "VueTables__child-row-toggler " + props["class"]()
-          }, null)]);
-        }
+          },
+          "on-click": props.toggle
+        }, [(0, _vue.createVNode)("span", {
+          "class": "VueTables__child-row-toggler " + props["class"]()
+        }, null)]);
       }
-    }, null);
+    });
   }
 };
 exports["default"] = _default2;

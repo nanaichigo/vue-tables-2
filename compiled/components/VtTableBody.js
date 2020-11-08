@@ -17,6 +17,8 @@ var _VtGroupRow = _interopRequireDefault(require("./VtGroupRow"));
 
 var _VtChildRow = _interopRequireDefault(require("./VtChildRow"));
 
+var _omit = _interopRequireDefault(require("../helpers/omit"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 var _default2 = {
@@ -29,43 +31,39 @@ var _default2 = {
     VtGroupRow: _VtGroupRow["default"]
   },
   render: function render() {
-    return (0, _vue.createVNode)((0, _vue.resolveComponent)("r-l-table-body"), {
-      "scopedSlots": {
-        "default": function _default(props) {
-          var rows = [];
-          var currentGroup;
-          props.data.forEach(function (row, index) {
-            if (props.groupBy && props.source === 'client' && row[props.groupBy] !== currentGroup) {
-              rows.push((0, _vue.createVNode)((0, _vue.resolveComponent)("vt-group-row"), {
-                "row": row
-              }, null));
-              currentGroup = row[props.groupBy];
-            }
+    return (0, _vue.h)(_RLTableBody["default"], {}, {
+      "default": function _default(props) {
+        var rows = [];
+        var currentGroup;
+        props.data.forEach(function (row, index) {
+          if (props.groupBy && props.source === 'client' && row[props.groupBy] !== currentGroup) {
+            rows.push((0, _vue.h)(_VtGroupRow["default"], {
+              row: row
+            }));
+            currentGroup = row[props.groupBy];
+          }
 
-            if (props.canToggleGroups && props.collapsedGroups.includes(currentGroup)) {
-              return;
-            }
+          if (props.canToggleGroups && props.collapsedGroups.includes(currentGroup)) {
+            return;
+          }
 
-            rows.push((0, _vue.createVNode)((0, _vue.resolveComponent)("vt-table-row"), {
-              "row": row,
-              "index": props.initialIndex + index + 1
-            }, null));
+          rows.push((0, _vue.h)(_VtTableRow["default"], {
+            row: row,
+            index: props.initialIndex + index + 1
+          }));
 
-            if (props.hasChildRow && props.openChildRows.includes(row[props.uniqueRowId])) {
-              rows.push((0, _vue.createVNode)((0, _vue.resolveComponent)("vt-child-row"), {
-                "row": row,
-                "index": props.initialIndex + index + 1
-              }, null));
-            }
-          });
-          return props.override ? h(props.override, {
-            attrs: {
-              props: props
-            }
-          }) : (0, _vue.createVNode)("tbody", null, [props.slots.prependBody, props.data.length === 0 ? (0, _vue.createVNode)((0, _vue.resolveComponent)("vt-no-results-row"), null, null) : '', rows, props.slots.appendBody]);
-        }
+          if (props.hasChildRow && props.openChildRows.includes(row[props.uniqueRowId])) {
+            rows.push((0, _vue.h)(_VtChildRow["default"], {
+              row: row,
+              index: props.initialIndex + index + 1
+            }));
+          }
+        });
+        return props.override ? (0, _vue.h)(props.override, {
+          props: (0, _omit["default"])(props)
+        }) : (0, _vue.createVNode)("tbody", null, [props.slots.prependBody, props.data.length === 0 ? (0, _vue.h)(_VtNoResultsRow["default"]) : '', rows, props.slots.appendBody]);
       }
-    }, null);
+    });
   }
 };
 exports["default"] = _default2;

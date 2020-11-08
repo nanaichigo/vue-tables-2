@@ -10,7 +10,7 @@ var _default = {
   render: function render() {
     var _this = this;
 
-    return this.$scopedSlots["default"]({
+    return this.$slots["default"]({
       opts: this.opts(),
       perPageValues: this.perPageValues(),
       theme: this.theme,

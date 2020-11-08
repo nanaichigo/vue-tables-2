@@ -19,6 +19,8 @@ var _VtGenericFilter = _interopRequireDefault(require("./VtGenericFilter"));
 
 var _VtColumnsDropdown = _interopRequireDefault(require("./VtColumnsDropdown"));
 
+var _omit = _interopRequireDefault(require("../helpers/omit"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 var _default2 = {
@@ -106,9 +108,6 @@ var _default2 = {
     var _this = this;
 
     return {
-      scopedSlots: function scopedSlots() {
-        return _this.$scopedSlots;
-      },
       slots: function slots() {
         return _this.$slots;
       }
@@ -117,7 +116,7 @@ var _default2 = {
   model: {
     prop: "data"
   },
-  render: function render(h) {
+  render: function render() {
     return (0, _vue.createVNode)((0, _vue.resolveComponent)("r-l-server-table"), {
       "url": this.url,
       "columns": this.columns,
@@ -126,7 +125,7 @@ var _default2 = {
       "ref": "table",
       "scopedSlots": {
         "default": function _default(props) {
-          return props.override ? h(props.override, {
+          return props.override ? (0, _vue.h)(props.override, {
             attrs: {
               props: props
             }

@@ -9,7 +9,7 @@ var _default = {
   props: ['row'],
   inject: ['colspan', 'opts', 'theme', 'toggleGroupDirection', 'toggleGroup', 'groupToggleIcon', 'getGroupSlot', 'componentsOverride'],
   render: function render() {
-    return this.$scopedSlots["default"]({
+    return this.$slots["default"]({
       opts: this.opts(),
       theme: this.theme,
       colspan: this.colspan(),

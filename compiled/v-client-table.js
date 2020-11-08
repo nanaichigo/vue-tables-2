@@ -1,18 +1,23 @@
 "use strict";
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports["default"] = install;
+
 var _vuex = _interopRequireDefault(require("./state/vuex"));
 
 var _normal = _interopRequireDefault(require("./state/normal"));
 
 var _merge = _interopRequireDefault(require("merge"));
 
-var _table = _interopRequireDefault(require("./table"));
-
 var _data2 = _interopRequireDefault(require("./state/data"));
 
 var _resizeableColumns = _interopRequireDefault(require("./helpers/resizeable-columns"));
 
 var _VtClientTable = _interopRequireDefault(require("./components/VtClientTable"));
+
+var _table = _interopRequireDefault(require("./table"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
@@ -28,7 +33,7 @@ var themes = {
   bulma: require('./themes/bulma')()
 };
 
-exports.install = function (Vue, globalOptions, useVuex) {
+function install(app, globalOptions, useVuex) {
   var theme = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : "bootstrap3";
   var componentsOverride = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : {};
 
@@ -71,13 +76,14 @@ exports.install = function (Vue, globalOptions, useVuex) {
     mounted: function mounted() {
       var _this = this;
 
-      this._setFiltersDOM(this.query);
-
-      if (this.opts.resizableColumns) {
-        (0, _resizeableColumns["default"])(this.$el.querySelector("table"), this.hasChildRow, this.opts.childRowTogglerFirst);
-      } // this._setColumnsDropdownCloseListener();
-
-
+      // this._setFiltersDOM(this.query);
+      // if (this.opts.resizableColumns) {
+      //     resizableColumns(
+      //         this.$el.querySelector("table"),
+      //         this.hasChildRow,
+      //         this.opts.childRowTogglerFirst
+      //     );
+      // }
       if (!this.vuex) {
         this.registerClientFilters();
         if (this.options.initialPage) this.setPage(this.options.initialPage);
@@ -178,7 +184,7 @@ exports.install = function (Vue, globalOptions, useVuex) {
 
   var state = useVuex ? (0, _vuex["default"])() : (0, _normal["default"])();
   client = _merge["default"].recursive(client, state);
-  Vue.component("r-l-client-table", client);
-  Vue.component("v-client-table", _VtClientTable["default"]);
-  return _VtClientTable["default"];
-};
+  app.component("v-client-table", (0, _VtClientTable["default"])(client));
+}
+
+;

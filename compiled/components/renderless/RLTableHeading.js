@@ -20,7 +20,7 @@ var _default = {
   render: function render(h) {
     var _this2 = this;
 
-    return this.$scopedSlots["default"]({
+    return this.$slots["default"]({
       opts: this.opts(),
       thAttrs: {
         "class": this.sortableClass(this.column),

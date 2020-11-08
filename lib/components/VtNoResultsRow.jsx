@@ -1,21 +1,20 @@
 import RLNoResultsRow from "./renderless/RLNoResultsRow";
+import {h} from "vue"
+import omit from "../helpers/omit"
 
 export default {
     name: 'VtNoResultsRow',
     components: {RLNoResultsRow},
     render() {
-        return <r-l-no-results-row scopedSlots={
-            {
+        return h(RLNoResultsRow, {
                 default: function (props) {
-                    return props.override ? h(props.override, {attrs:{props}}) : <tr class="VueTables__no-results">
+                    return props.override ? h(props.override, {props:omit(props)}) : <tr class="VueTables__no-results">
                         <td class="text-center" tabindex={props.tabIndex}
                             colspan={props.colspan}>
                             {props.display(props.message)}
                         </td>
                     </tr>
                 }
-            }
-        }>
-        </r-l-no-results-row>
+        })
     }
 }

@@ -11,6 +11,8 @@ var _RLColumnsDropdown = _interopRequireDefault(require("./renderless/RLColumnsD
 
 var _dropdownWrapper = _interopRequireDefault(require("./dropdown-wrapper"));
 
+var _omit = _interopRequireDefault(require("../helpers/omit"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 var _default2 = {
@@ -18,48 +20,44 @@ var _default2 = {
   components: {
     RLColumnsDropdown: _RLColumnsDropdown["default"]
   },
-  render: function render(h) {
-    return (0, _vue.createVNode)((0, _vue.resolveComponent)("r-l-columns-dropdown"), {
-      "scopedSlots": {
-        "default": function _default(props) {
-          if (props.override) {
-            return h(props.override, {
-              attrs: {
-                props: props
-              }
-            });
-          }
-
-          var content;
-          var cols = props.origColumns.map(function (column) {
-            content = (0, _vue.createVNode)("a", {
-              "class": props.theme.dropdown.item,
-              "href": "#",
-              "onClick": function onClick() {
-                return props.toggleColumn(column);
-              }
-            }, [(0, _vue.createVNode)("input", {
-              "type": "checkbox",
-              "value": column,
-              "disabled": props.onlyColumn(column),
-              "checked": props.columns.includes(column)
-            }, null), props.getHeading(column)]);
-            return props.theme.framework === 'bulma' ? content : (0, _vue.createVNode)("li", null, [content]);
+  render: function render() {
+    return (0, _vue.h)(_RLColumnsDropdown["default"], {}, {
+      "default": function _default(props) {
+        if (props.override) {
+          return (0, _vue.h)(props.override, {
+            props: (0, _omit["default"])(props)
           });
-          return (0, _vue.createVNode)("div", {
-            "class": "VueTables__columns-dropdown"
-          }, [(0, _vue.createVNode)("button", {
-            "type": "button",
-            "class": "".concat(props.theme.button, " ").concat(props.theme.dropdown.trigger),
-            "on-click": props.toggleColumnsDropdown
-          }, [props.display('columns'), (0, _vue.createVNode)("span", {
-            "class": "".concat(props.theme.icon, " ").concat(props.theme.small)
-          }, [(0, _vue.createVNode)("i", {
-            "class": props.theme.dropdown.caret
-          }, null)])]), (0, _dropdownWrapper["default"])(h, props.theme.dropdown, cols, props.displayColumnsDropdown)]);
         }
+
+        var content;
+        var cols = props.origColumns.map(function (column) {
+          content = (0, _vue.createVNode)("a", {
+            "class": props.theme.dropdown.item,
+            "href": "#",
+            "onClick": function onClick() {
+              return props.toggleColumn(column);
+            }
+          }, [(0, _vue.createVNode)("input", {
+            "type": "checkbox",
+            "value": column,
+            "disabled": props.onlyColumn(column),
+            "checked": props.columns.includes(column)
+          }, null), props.getHeading(column)]);
+          return props.theme.framework === 'bulma' ? content : (0, _vue.createVNode)("li", null, [content]);
+        });
+        return (0, _vue.createVNode)("div", {
+          "class": "VueTables__columns-dropdown"
+        }, [(0, _vue.createVNode)("button", {
+          "type": "button",
+          "class": "".concat(props.theme.button, " ").concat(props.theme.dropdown.trigger),
+          "on-click": props.toggleColumnsDropdown
+        }, [props.display('columns'), (0, _vue.createVNode)("span", {
+          "class": "".concat(props.theme.icon, " ").concat(props.theme.small)
+        }, [(0, _vue.createVNode)("i", {
+          "class": props.theme.dropdown.caret
+        }, null)])]), (0, _dropdownWrapper["default"])(_vue.h, props.theme.dropdown, cols, props.displayColumnsDropdown)]);
       }
-    }, null);
+    });
   }
 };
 exports["default"] = _default2;

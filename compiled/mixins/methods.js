@@ -1,6 +1,10 @@
 "use strict";
 
-module.exports = {
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports["default"] = void 0;
+var _default = {
   initQuery: require('../methods/init-query'),
   resetQuery: require('../methods/reset-query'),
   initCustomFilters: require('../methods/init-custom-filters'),
@@ -64,3 +68,4 @@ module.exports = {
   _filterType: require('../methods/filter-type'),
   _search: require('../methods/search')
 };
+exports["default"] = _default;

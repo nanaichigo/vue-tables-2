@@ -1,7 +1,7 @@
 "use strict";
 
 module.exports = function () {
-  return this.$scopedSlots["default"]({
+  return this.$slots["default"]({
     source: this.source,
     theme: this.theme,
     opts: this.opts,

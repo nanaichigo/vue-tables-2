@@ -11,6 +11,8 @@ var _RLTableHeading = _interopRequireDefault(require("./renderless/RLTableHeadin
 
 var _VtSortControl = _interopRequireDefault(require("./VtSortControl"));
 
+var _omit = _interopRequireDefault(require("../helpers/omit"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 var _default2 = {
@@ -21,27 +23,24 @@ var _default2 = {
     VtSortControl: _VtSortControl["default"]
   },
   render: function render() {
-    return (0, _vue.createVNode)((0, _vue.resolveComponent)("r-l-table-heading"), {
-      "column": this.column,
-      "scopedSlots": {
-        "default": function _default(props) {
-          return props.override ? h(props.override, {
-            attrs: {
-              props: props
-            }
-          }) : (0, _vue.createVNode)("th", {
-            "on-keypress": props.thEvents.keypress,
-            "on-click": props.thEvents.click,
-            "class": props.thAttrs["class"],
-            "title": props.thAttrs.title,
-            "tabindex": props.thAttrs.tabIndex
-          }, [(0, _vue.createVNode)("span", {
-            "class": "VueTables__heading",
-            "title": props.title
-          }, [props.heading]), (0, _vue.createVNode)((0, _vue.resolveComponent)("vt-sort-control"), null, null)]);
-        }
+    return (0, _vue.h)(_RLTableHeading["default"], {
+      column: this.column
+    }, {
+      "default": function _default(props) {
+        return props.override ? (0, _vue.h)(props.override, {
+          props: (0, _omit["default"])(props)
+        }) : (0, _vue.createVNode)("th", {
+          "on-keypress": props.thEvents.keypress,
+          "on-click": props.thEvents.click,
+          "class": props.thAttrs["class"],
+          "title": props.thAttrs.title,
+          "tabindex": props.thAttrs.tabIndex
+        }, [(0, _vue.createVNode)("span", {
+          "class": "VueTables__heading",
+          "title": props.title
+        }, [props.heading]), (0, _vue.h)(_VtSortControl["default"])]);
       }
-    }, null);
+    });
   }
 };
 exports["default"] = _default2;

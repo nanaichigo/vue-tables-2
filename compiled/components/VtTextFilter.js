@@ -9,6 +9,8 @@ var _vue = require("vue");
 
 var _RLTextFilter = _interopRequireDefault(require("./renderless/RLTextFilter"));
 
+var _omit = _interopRequireDefault(require("../helpers/omit"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 var _default2 = {
@@ -20,27 +22,24 @@ var _default2 = {
   render: function render() {
     var _this = this;
 
-    return (0, _vue.createVNode)((0, _vue.resolveComponent)("r-l-text-filter"), {
-      "column": this.column,
-      "scopedSlots": {
-        "default": function _default(props) {
-          return props.override ? h(props.override, {
-            attrs: {
-              props: props
-            }
-          }) : (0, _vue.createVNode)("input", {
-            "on-keyup": props.search(props.debounce),
-            "class": props.theme.input,
-            "name": props.getColumnName(_this.column),
-            "type": "text",
-            "placeholder": props.display('filterBy', {
-              column: props.getHeading(_this.column)
-            }),
-            "autocomplete": "off"
-          }, null);
-        }
+    return (0, _vue.h)(_RLTextFilter["default"], {
+      column: this.column
+    }, {
+      "default": function _default(props) {
+        return props.override ? (0, _vue.h)(props.override, {
+          props: (0, _omit["default"])(props)
+        }) : (0, _vue.createVNode)("input", {
+          "on-keyup": props.search(props.debounce),
+          "class": props.theme.input,
+          "name": props.getColumnName(_this.column),
+          "type": "text",
+          "placeholder": props.display('filterBy', {
+            column: props.getHeading(_this.column)
+          }),
+          "autocomplete": "off"
+        }, null);
       }
-    }, null);
+    });
   }
 };
 exports["default"] = _default2;
