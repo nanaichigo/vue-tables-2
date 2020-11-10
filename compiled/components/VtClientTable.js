@@ -58,6 +58,7 @@ function _default2(RLClientTable) {
     },
     methods: {
       setLoadingState: function setLoadingState(isLoading) {
+        console.log(this.$refs.table.loading, isLoading);
         this.$refs.table.loading = isLoading;
       },
       setFilter: function setFilter(val) {
@@ -111,7 +112,8 @@ function _default2(RLClientTable) {
         data: this.data,
         columns: this.columns,
         name: this.name,
-        options: this.options
+        options: this.options,
+        ref: 'table'
       }, {
         "default": function _default(props) {
           return props.override ? (0, _vue.h)(props.override, {

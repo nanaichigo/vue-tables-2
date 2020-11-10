@@ -42,6 +42,8 @@ export default function (RLClientTable) {
         },
         methods: {
             setLoadingState(isLoading) {
+                console.log(this.$refs.table.loading,isLoading)
+
                 this.$refs.table.loading = isLoading
             },
             setFilter(val) {
@@ -90,7 +92,8 @@ export default function (RLClientTable) {
                 data: this.data,
                 columns: this.columns,
                 name: this.name,
-                options: this.options
+                options: this.options,
+                ref:'table'
             }, {
                 default: function (props) {
                     return props.override ? h(props.override, {
