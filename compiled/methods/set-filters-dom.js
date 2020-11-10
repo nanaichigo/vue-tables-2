@@ -7,8 +7,6 @@ module.exports = function (query) {
 
   if (this.opts.filterByColumn) {
     for (var column in query) {
-      var columnName = this._getColumnName(column);
-
       if (this.isDateFilter(column)) {
         if (query[column] && _typeof(query[column]) === 'object') {
           var start = typeof query[column].start === 'string' ? moment(query[column].start, 'YYYY-MM-DD') : query[column].start;
@@ -16,7 +14,7 @@ module.exports = function (query) {
 
           this._setDatepickerText(column, start, end);
         } else {
-          $(this.$el).find("#VueTables__" + $.escapeSelector(column) + "-filter").html("<span class='VueTables__filter-placeholder'>" + this.display('filterBy', {
+          $(this.refs.filters[column]).html("<span class='VueTables__filter-placeholder'>" + this.display('filterBy', {
             column: this.getHeading(column)
           }) + "</span>");
         }
@@ -24,7 +22,7 @@ module.exports = function (query) {
         continue;
       }
 
-      el = this.$el.querySelector("[name='".concat(columnName.replace("'", "\\'"), "']"));
+      el = this.refs.filters[column];
 
       if (el) {
         el.value = query[column];

@@ -19,10 +19,20 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
 
 var _default2 = {
   name: 'VtTable',
+  inject: ['setRef'],
   components: {
     RLTable: _RLTable["default"],
     VtTableHead: _VtTableHead["default"],
     VtTableBody: _VtTableBody["default"]
+  },
+  setup: function setup() {
+    var table = (0, _vue.ref)(null);
+    return {
+      table: table
+    };
+  },
+  mounted: function mounted() {
+    this.setRef('table', this.$refs.table);
   },
   render: function render() {
     return (0, _vue.h)(_RLTable["default"], {}, {
@@ -31,6 +41,7 @@ var _default2 = {
         return props.override ? (0, _vue.h)(props.override, {
           props: (0, _omit["default"])(props)
         }) : (0, _vue.createVNode)("table", {
+          "ref": "table",
           "class": props.tableAttrs["class"],
           "summary": props.tableAttrs.summary
         }, [caption, (0, _vue.h)(_VtTableHead["default"]), props.slots.beforeBody, (0, _vue.h)(_VtTableBody["default"]), props.slots.afterBody]);

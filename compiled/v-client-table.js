@@ -76,14 +76,12 @@ function install(app, globalOptions, useVuex) {
     mounted: function mounted() {
       var _this = this;
 
-      // this._setFiltersDOM(this.query);
-      // if (this.opts.resizableColumns) {
-      //     resizableColumns(
-      //         this.$el.querySelector("table"),
-      //         this.hasChildRow,
-      //         this.opts.childRowTogglerFirst
-      //     );
-      // }
+      this._setFiltersDOM(this.query);
+
+      if (this.opts.resizableColumns) {
+        (0, _resizeableColumns["default"])(this.refs.table, this.hasChildRow, this.opts.childRowTogglerFirst);
+      }
+
       if (!this.vuex) {
         this.registerClientFilters();
         if (this.options.initialPage) this.setPage(this.options.initialPage);

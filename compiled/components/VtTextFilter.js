@@ -15,6 +15,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
 
 var _default2 = {
   name: 'VtTextFilter',
+  inject: ['setFilterRef'],
   props: {
     column: {
       required: true,
@@ -23,6 +24,15 @@ var _default2 = {
   },
   components: {
     RLTextFilter: _RLTextFilter["default"]
+  },
+  setup: function setup() {
+    var filter = (0, _vue.ref)(null);
+    return {
+      filter: filter
+    };
+  },
+  mounted: function mounted() {
+    this.setFilterRef(this.column, this.$refs.filter);
   },
   render: function render() {
     var _this = this;
@@ -34,6 +44,7 @@ var _default2 = {
         return props.override ? (0, _vue.h)(props.override, {
           props: (0, _omit["default"])(props)
         }) : (0, _vue.createVNode)("input", {
+          "ref": "filter",
           "onKeyup": props.search(props.debounce),
           "class": props.theme.input,
           "name": props.name,

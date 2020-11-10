@@ -112,6 +112,9 @@ module.exports = function () {
     },
     setRef: function setRef(key, el) {
       _this.refs[key] = el;
+    },
+    setFilterRef: function setFilterRef(key, el) {
+      _this.refs.filters[key] = el;
     }
   };
 };

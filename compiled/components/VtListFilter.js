@@ -15,9 +15,19 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
 
 var _default2 = {
   name: 'VtListFilter',
+  inject: ['setFilterRef'],
   props: ['column'],
   components: {
     RLListFilter: _RLListFilter["default"]
+  },
+  setup: function setup() {
+    var filter = (0, _vue.ref)(null);
+    return {
+      filter: filter
+    };
+  },
+  mounted: function mounted() {
+    this.setFilterRef(this.column, this.$refs.filter);
   },
   render: function render() {
     var _this = this;
@@ -39,10 +49,11 @@ var _default2 = {
           props: (0, _omit["default"])(props)
         }) : (0, _vue.createVNode)("div", {
           "class": "VueTables__list-filter",
+          "ref": "filter",
           "id": 'VueTables__' + _this.column + '-filter'
         }, [(0, _vue.createVNode)("select", {
           "class": props.theme.select,
-          "on-change": props.search(false),
+          "onChange": props.search(false),
           "name": props.name,
           "value": props.value
         }, [(0, _vue.createVNode)("option", {
