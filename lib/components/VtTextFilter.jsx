@@ -4,7 +4,12 @@ import omit from "../helpers/omit"
 
 export default {
     name: 'VtTextFilter',
-    props: ['column'],
+    props: {
+        column: {
+            required: true,
+            type: String
+        }
+    },
     components: {RLTextFilter},
     render() {
         return h(RLTextFilter, {
@@ -14,9 +19,9 @@ export default {
                 return props.override ? h(props.override, {
                     props: omit(props)
                 }) : <input
-                    on-keyup={props.search(props.debounce)}
+                    onKeyup={props.search(props.debounce)}
                     class={props.theme.input}
-                    name={props.getColumnName(this.column)}
+                    name={props.name}
                     type="text"
                     placeholder={props.display('filterBy', {column: props.getHeading(this.column)})}
                     autocomplete="off"

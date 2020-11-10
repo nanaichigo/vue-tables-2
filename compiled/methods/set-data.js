@@ -7,7 +7,7 @@ module.exports = function (response) {
   this.data = data.data;
 
   if (isNaN(data.count)) {
-    console.error("vue-tables-2: invalid 'count' property. Expected number, got ".concat(_typeof(data.count)));
+    console.error("vue-tables-3: invalid 'count' property. Expected number, got ".concat(_typeof(data.count)));
     console.error('count equals', data.count);
     throw new Error();
   }

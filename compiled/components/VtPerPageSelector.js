@@ -31,7 +31,7 @@ var _default2 = {
         }, [props.display('limit')]), (0, _vue.createVNode)("select", {
           "id": props.selectAttrs.id,
           "class": props.selectAttrs["class"],
-          "on-change": props.selectEvents.change
+          "onChange": props.selectEvents.change
         }, [props.perPageValues.map(function (val) {
           return (0, _vue.createVNode)("option", {
             "value": val,

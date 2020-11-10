@@ -30,8 +30,8 @@ var _default2 = {
         return props.override ? (0, _vue.h)(props.override, {
           props: (0, _omit["default"])(props)
         }) : (0, _vue.createVNode)("th", {
-          "on-keypress": props.thEvents.keypress,
-          "on-click": props.thEvents.click,
+          "onKeypress": props.thEvents.keypress,
+          "onClick": props.thEvents.click,
           "class": props.thAttrs["class"],
           "title": props.thAttrs.title,
           "tabindex": props.thAttrs.tabIndex

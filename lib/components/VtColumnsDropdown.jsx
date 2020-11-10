@@ -34,7 +34,7 @@ export default {
 
                 return <div class="VueTables__columns-dropdown">
                     <button type="button" class={`${props.theme.button} ${props.theme.dropdown.trigger}`}
-                            on-click={props.toggleColumnsDropdown}>
+                            onClick={props.toggleColumnsDropdown}>
                         {props.display('columns')}
                         <span class={`${props.theme.icon} ${props.theme.small}`}>
                                     <i class={props.theme.dropdown.caret}></i>

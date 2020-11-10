@@ -50,7 +50,7 @@ var _default2 = {
         }, [(0, _vue.createVNode)("button", {
           "type": "button",
           "class": "".concat(props.theme.button, " ").concat(props.theme.dropdown.trigger),
-          "on-click": props.toggleColumnsDropdown
+          "onClick": props.toggleColumnsDropdown
         }, [props.display('columns'), (0, _vue.createVNode)("span", {
           "class": "".concat(props.theme.icon, " ").concat(props.theme.small)
         }, [(0, _vue.createVNode)("i", {

@@ -30,7 +30,7 @@ var _default = {
       thEvents: {
         keypress: function keypress(e) {
           if (e.key === "Enter") {
-            this.orderByColumn(this.column, e);
+            _this2.orderByColumn(_this2.column, e);
           }
         },
         click: function click(e) {

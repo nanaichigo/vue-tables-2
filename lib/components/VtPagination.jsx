@@ -18,7 +18,7 @@ export default {
                     records: props.records,
                     perPage: props.perPage,
                     modelValue: props.page,
-                    onInput: (page) => props.setPage(page)
+                    "onUpdate:modelValue": (page) => props.setPage(page)
                 })
             }
         })

@@ -15,7 +15,12 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
 
 var _default2 = {
   name: 'VtTextFilter',
-  props: ['column'],
+  props: {
+    column: {
+      required: true,
+      type: String
+    }
+  },
   components: {
     RLTextFilter: _RLTextFilter["default"]
   },
@@ -29,9 +34,9 @@ var _default2 = {
         return props.override ? (0, _vue.h)(props.override, {
           props: (0, _omit["default"])(props)
         }) : (0, _vue.createVNode)("input", {
-          "on-keyup": props.search(props.debounce),
+          "onKeyup": props.search(props.debounce),
           "class": props.theme.input,
-          "name": props.getColumnName(_this.column),
+          "name": props.name,
           "type": "text",
           "placeholder": props.display('filterBy', {
             column: props.getHeading(_this.column)

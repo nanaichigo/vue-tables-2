@@ -19,7 +19,7 @@ var _default2 = {
     RLNoResultsRow: _RLNoResultsRow["default"]
   },
   render: function render() {
-    return (0, _vue.h)(_RLNoResultsRow["default"], {
+    return (0, _vue.h)(_RLNoResultsRow["default"], {}, {
       "default": function _default(props) {
         return props.override ? (0, _vue.h)(props.override, {
           props: (0, _omit["default"])(props)

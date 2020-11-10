@@ -108,7 +108,10 @@ module.exports = function () {
       return _this.loading;
     },
     initialRequestSent: function initialRequestSent() {
-      return _this.initialRequestSent;
+      return _this.source === 'server' && _this.initialRequestSent;
+    },
+    setRef: function setRef(key, el) {
+      _this.refs[key] = el;
     }
   };
 };

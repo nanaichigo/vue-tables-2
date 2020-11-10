@@ -15,8 +15,18 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
 
 var _default2 = {
   name: 'VtGenericFilter',
+  inject: ['setRef'],
   components: {
     RLGenericFilter: _RLGenericFilter["default"]
+  },
+  setup: function setup() {
+    var filter = (0, _vue.ref)(null);
+    return {
+      filter: filter
+    };
+  },
+  mounted: function mounted() {
+    this.setRef('genericFilter', this.$refs.filter);
   },
   render: function render() {
     return (0, _vue.h)(_RLGenericFilter["default"], {}, {
@@ -30,9 +40,10 @@ var _default2 = {
           "class": props.theme.label
         }, [props.display("filter")]), (0, _vue.createVNode)("input", {
           "class": "VueTables__search__input ".concat(props.theme.input, " ").concat(props.theme.small),
+          "ref": "filter",
           "type": "text",
           "placeholder": props.display('filterPlaceholder'),
-          "on-keyup": props.search(props.opts.debounce),
+          "onKeyup": props.search(props.opts.debounce),
           "id": "VueTables__search_".concat(props.id),
           "autocomplete": "off"
         }, null)]);

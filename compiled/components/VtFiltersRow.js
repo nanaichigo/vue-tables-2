@@ -37,9 +37,7 @@ var _default2 = {
 
           if (props.filterable(column)) {
             filter = (0, _vue.h)(props.filterType(column), {
-              props: {
-                column: column
-              }
+              column: column
             });
           }
 

@@ -6,7 +6,7 @@ export default {
     name: 'VtNoResultsRow',
     components: {RLNoResultsRow},
     render() {
-        return h(RLNoResultsRow, {
+        return h(RLNoResultsRow, {}, {
                 default: function (props) {
                     return props.override ? h(props.override, {props:omit(props)}) : <tr class="VueTables__no-results">
                         <td class="text-center" tabindex={props.tabIndex}

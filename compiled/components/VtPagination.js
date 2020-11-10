@@ -31,7 +31,7 @@ var _default2 = {
           records: props.records,
           perPage: props.perPage,
           modelValue: props.page,
-          onInput: function onInput(page) {
+          "onUpdate:modelValue": function onUpdateModelValue(page) {
             return props.setPage(page);
           }
         });

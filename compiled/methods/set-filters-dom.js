@@ -29,11 +29,11 @@ module.exports = function (query) {
       if (el) {
         el.value = query[column];
       } else if (this.columns.indexOf(column) === -1) {
-        console.error("vue-tables-2: Error in setting filter value. Column '".concat(column, "' does not exist."));
+        console.error("vue-tables-3: Error in setting filter value. Column '".concat(column, "' does not exist."));
       }
     }
   } else {
-    var el = this.$el.querySelector('.VueTables__search__input');
+    var el = this.refs.genericFilter;
     if (el) el.value = query;
   }
 };

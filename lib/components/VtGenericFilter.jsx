@@ -1,14 +1,24 @@
 import RLGenericFilter from "./renderless/RLGenericFilter";
-import {h} from "vue"
+import {h, ref,onMounted} from "vue"
 import omit from "../helpers/omit"
 
 export default {
     name: 'VtGenericFilter',
+    inject:['setRef'],
     components: {RLGenericFilter},
+    setup() {
+        const filter = ref(null);
+
+        return {
+            filter,
+        };
+    },
+    mounted() {
+        this.setRef('genericFilter', this.$refs.filter)
+    },
     render() {
         return h(RLGenericFilter, {}, {
             default: function (props) {
-
                 return props.override ? h(props.override, {
                         props: omit(props)
                     }) :
@@ -18,10 +28,10 @@ export default {
                         </label>
 
                         <input class={`VueTables__search__input ${props.theme.input} ${props.theme.small}`}
-                               // ref="filter"
+                               ref="filter"
                                type="text"
                                placeholder={props.display('filterPlaceholder')}
-                               on-keyup={props.search(props.opts.debounce)}
+                               onKeyup={props.search(props.opts.debounce)}
                                id={`VueTables__search_${props.id}`}
                                autocomplete="off"
                         />

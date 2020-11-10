@@ -11,8 +11,8 @@ export default {
         return h(RLTableHeading, {column: this.column}, {
             default: function (props) {
                 return props.override ? h(props.override, {props: omit(props)}) : <th
-                    on-keypress={props.thEvents.keypress}
-                    on-click={props.thEvents.click}
+                    onKeypress={props.thEvents.keypress}
+                    onClick={props.thEvents.click}
                     class={props.thAttrs.class}
                     title={props.thAttrs.title}
                     tabindex={props.thAttrs.tabIndex}

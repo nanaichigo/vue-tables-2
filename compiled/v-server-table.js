@@ -59,7 +59,7 @@ exports.install = function (Vue, globalOptions, useVuex) {
     provide: provide,
     created: function created() {
       if (!this.opts.requestFunction && !this.url) {
-        throw 'vue-tables-2: you must provide either a "url" prop or a custom request function. Aborting';
+        throw 'vue-tables-3: you must provide either a "url" prop or a custom request function. Aborting';
       }
 
       _created(this);
